@@ -2,6 +2,8 @@ package com.br.project.clienteservico.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +29,7 @@ public class ClienteController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente salvar(@RequestBody Cliente cliente) {
+	public Cliente salvar(@RequestBody @Valid Cliente cliente) {
 		return clienteService.salvar(cliente);
 	}
 	
@@ -39,7 +41,7 @@ public class ClienteController {
 	@GetMapping("/{id}")
 	public Cliente buscarPorId(@PathVariable Integer id) {
 		return clienteService.buscarPorId(id)
-				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+				.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Id do cliente não encontrado"));
 	}
 	
 	@DeleteMapping("/{id}")
@@ -51,7 +53,7 @@ public class ClienteController {
 	
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public Cliente atualizar(@PathVariable Integer id, @RequestBody Cliente clienteAtualizado) {
+	public Cliente atualizar(@PathVariable Integer id, @RequestBody @Valid Cliente clienteAtualizado) {
 		buscarPorId(id);
 		clienteAtualizado.setId(id);
 		
