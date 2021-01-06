@@ -38,10 +38,13 @@ export class ClientesFormComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate(['/clientes-lista'])
+    this.router.navigate(['/clientes/lista'])
   }
 
   onSubmit(){
+    //this.cliente = new Cliente();
+    //this.success = true;
+
     if(this.id){
       this.service.atualizar(this.cliente)
         .subscribe(response => {
@@ -55,7 +58,8 @@ export class ClientesFormComponent implements OnInit {
         .salvar(this.cliente).subscribe( response => {
           this.success = true;
           this.errors = null;
-          this.cliente = response;
+          //this.cliente = response;
+          this.cliente = new Cliente();
         }, errorResponse => {
           this.success = false;
           this.errors = errorResponse.error.errors;

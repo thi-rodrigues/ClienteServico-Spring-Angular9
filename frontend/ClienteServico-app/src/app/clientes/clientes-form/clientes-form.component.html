@@ -3,12 +3,12 @@
     <li class="breadcrumb-item active">{{ cliente.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
-    <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
-
+    <form #clienteForm="ngForm" (submit)="onSubmit()">
+       
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success" role="alert" *ngIf="success == true">
-                    Cliente salvo / atualizado com sucesso!
+                    Cliente salvo com sucesso!
                 </div>
                 <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
                     {{ erro }}
