@@ -29,7 +29,8 @@ public class WebConfig {
 		
 		CorsFilter corsFilter = new CorsFilter(source);
 		FilterRegistrationBean<CorsFilter> filter = new FilterRegistrationBean<>(corsFilter);
-		filter.setOrder(Ordered.HIGHEST_PRECEDENCE);
+		filter
+			.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		
 		return filter;
 	}
