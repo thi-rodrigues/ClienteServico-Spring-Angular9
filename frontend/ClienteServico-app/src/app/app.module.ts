@@ -13,7 +13,9 @@ import { ClientesModule } from './clientes/clientes.module';
 import { ClientesService } from './clientes.service';
 import { ServicoPrestadoService } from './servico-prestado.service';
 import { LoginComponent } from './login/login.component';
-import { LayoutComponent } from './layout/layout.component'
+import { LayoutComponent } from './layout/layout.component';
+import { AuthService } from './auth.service';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { LayoutComponent } from './layout/layout.component'
     LayoutComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -33,7 +35,8 @@ import { LayoutComponent } from './layout/layout.component'
   ],
   providers: [
     ClientesService,
-    ServicoPrestadoService
+    ServicoPrestadoService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
