@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Usuario } from './login/usuario';
 import { Observable } from 'rxjs';
 
-import { environment } from './../environments/environment';
+import { environment } from './../environments/environment.prod';
 
 import { JwtHelperService } from '@auth0/angular-jwt'
 
