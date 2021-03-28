@@ -42,8 +42,6 @@ export class ClientesFormComponent implements OnInit {
   }
 
   onSubmit(){
-    //this.cliente = new Cliente();
-    //this.success = true;
 
     if(this.id){
       this.service.atualizar(this.cliente)

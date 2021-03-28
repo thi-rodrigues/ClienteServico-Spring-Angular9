@@ -13,35 +13,36 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.br.project.clienteservico.service.UsuarioService;
 
+@SuppressWarnings("deprecation")
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UsuarioService usuarioService;
-	
+
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-			.userDetailsService(usuarioService)
-			.passwordEncoder(passwordEncoder());
+		auth.userDetailsService(usuarioService).passwordEncoder(passwordEncoder());
 	}
-	
+
 	@Bean
 	public AuthenticationManager authenticationManager() throws Exception {
 		return super.authenticationManager();
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-			.csrf().disable()
-			.cors()
-		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // não vai manter sessão
+		http.csrf()
+		.disable()
+		.cors()
+		.and()
+		.sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS); // não vai manter sessão
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
 	}
-	
+
 }
